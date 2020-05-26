@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
@@ -12,14 +12,14 @@
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/build.json", {onProgress: UnityProgress});
     </script>
   </head>
-  <body>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 960px; height: 800px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">Multitask</div>
+  <body onload="unityInstance.SetFullscreen(1)">
+      <div class="webgl-content">
+          <div id="unityContainer" style="width: 960px; height: 800px"></div>
+          <div class="footer">
+              <div class="webgl-logo"></div>
+              <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+              <div class="title">Multitask</div>
+          </div>
       </div>
-    </div>
   </body>
 </html>
