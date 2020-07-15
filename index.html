@@ -10,16 +10,7 @@
     <script src="Build/UnityLoader.js"></script>
     <script>
         var unityInstance = UnityLoader.instantiate("unityContainer", "Build/MultiTaskWebGL.json", {onProgress: UnityProgress});
-        XMLHttpRequest.prototype.originalOpen = XMLHttpRequest.prototype.open;
-        var newOpen = function(_, url) {
-        var original = this.originalOpen.apply(this, arguments);
-        if (url.indexOf('https://www.pmlean.com.br/api/MultiTaskGame/') === 0) {
-        this.withCredentials = true;
-        }
 
-        return original;
-        }
-        XMLHttpRequest.prototype.open = newOpen;
     </script>
 
 </head>
@@ -32,5 +23,17 @@
             <div class="title">Multitask</div>
         </div>
     </div>
+    <script>
+        XMLHttpRequest.prototype.originalOpen = XMLHttpRequest.prototype.open;
+        var newOpen = function(_, url) {
+        var original = this.originalOpen.apply(this, arguments);
+        if (url.indexOf('https://www.pmlean.com.br/api/MultiTaskGame/') === 0) {
+        this.withCredentials = true;
+        }
+
+        return original;
+        }
+        XMLHttpRequest.prototype.open = newOpen;
+    </script>
 </body>
 </html>
