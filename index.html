@@ -16,7 +16,7 @@
         XMLHttpRequest.prototype.originalOpen = XMLHttpRequest.prototype.open;
         var newOpen = function(_, url) {
         var original = this.originalOpen.apply(this, arguments);
-        if (url.indexOf('https://api.mygamebackend.com') === 0) {
+        if (url.indexOf('https://www.pmlean.com.br/api/MultiTaskGame/') === 0) {
         this.withCredentials = true;
         }
 
