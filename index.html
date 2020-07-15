@@ -10,9 +10,6 @@
     <script src="Build/UnityLoader.js"></script>
     <script>
         var unityInstance = UnityLoader.instantiate("unityContainer", "Build/MultiTaskWebGL.json", {onProgress: UnityProgress});
-    </script>
-    <script>
-
         XMLHttpRequest.prototype.originalOpen = XMLHttpRequest.prototype.open;
         var newOpen = function(_, url) {
         var original = this.originalOpen.apply(this, arguments);
@@ -24,15 +21,16 @@
         }
         XMLHttpRequest.prototype.open = newOpen;
     </script>
+
 </head>
-  <body>
+<body>
     <div class="webgl-content">
-      <div id="unityContainer" style="width: 800px; height: 960px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">Multitask</div>
-      </div>
+        <div id="unityContainer" style="width: 800px; height: 960px"></div>
+        <div class="footer">
+            <div class="webgl-logo"></div>
+            <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+            <div class="title">Multitask</div>
+        </div>
     </div>
-  </body>
+</body>
 </html>
