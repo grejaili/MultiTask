@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Multitask</title>
@@ -9,9 +9,22 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/MultiTaskWebGL.json", {onProgress: UnityProgress});
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/MultiTaskWebGL.json", {onProgress: UnityProgress});
     </script>
-  </head>
+    <script>
+
+        XMLHttpRequest.prototype.originalOpen = XMLHttpRequest.prototype.open;
+        var newOpen = function(_, url) {
+        var original = this.originalOpen.apply(this, arguments);
+        if (url.indexOf('https://api.mygamebackend.com') === 0) {
+        this.withCredentials = true;
+        }
+
+        return original;
+        }
+        XMLHttpRequest.prototype.open = newOpen;
+    </script>
+</head>
   <body>
     <div class="webgl-content">
       <div id="unityContainer" style="width: 800px; height: 960px"></div>
